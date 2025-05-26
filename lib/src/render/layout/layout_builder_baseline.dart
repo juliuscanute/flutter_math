@@ -67,6 +67,14 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
     }
   }
 
+  void runLayoutCallback(LayoutCallback<BoxConstraints> callback) {
+    callback(constraints);
+  }
+
+  void scheduleLayoutCallback(LayoutCallback<BoxConstraints> callback) {
+    markNeedsLayout();
+  }
+
   @override
   bool hitTestChildren(BoxHitTestResult result, {required Offset position}) =>
       child?.hitTest(result, position: position) ?? false;
