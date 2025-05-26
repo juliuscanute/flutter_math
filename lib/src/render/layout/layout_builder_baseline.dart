@@ -68,6 +68,15 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
     }
   }
 
+  void runLayoutCallback(void Function() callback) {
+    callback();
+  }
+
+  void scheduleLayoutCallback() {
+    // Schedule a rebuild/relayout using the standard Flutter mechanisms
+    markNeedsLayout();
+  }
+
   @override
   bool hitTestChildren(BoxHitTestResult result, {required Offset position}) =>
       child?.hitTest(result, position: position) ?? false;
