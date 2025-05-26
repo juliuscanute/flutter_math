@@ -58,7 +58,6 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
 
   @override
   void performLayout() {
-    final constraints = this.constraints;
     invokeLayoutCallback((constraints) {});
     if (child != null) {
       child!.layout(constraints, parentUsesSize: true);
@@ -66,15 +65,6 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
     } else {
       size = constraints.biggest;
     }
-  }
-
-  void runLayoutCallback(void Function() callback) {
-    callback();
-  }
-
-  void scheduleLayoutCallback() {
-    // Schedule a rebuild/relayout using the standard Flutter mechanisms
-    markNeedsLayout();
   }
 
   @override
@@ -98,7 +88,6 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
       }
       return true;
     }());
-
     return true;
   }
 }
